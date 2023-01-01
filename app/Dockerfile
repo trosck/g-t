@@ -1,7 +1,6 @@
-from node:18-slim
-workdir /var/app
-copy yarn.lock package.json .
-run yarn install --production
-copy . .
-expose 3000
-cmd ["yarn", "start"]
+FROM node:18-slim
+WORKDIR /var/app
+COPY yarn.lock package.json ./
+RUN yarn install --production
+COPY . .
+CMD ["yarn", "start"]
